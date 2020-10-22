@@ -19,7 +19,7 @@ function App() {
       else
       setisDawn(false);
   }, [dateBuilder])
-
+  
   const search = evt =>{
     if(evt.key==="Enter"){
       fetch(`${api.base}weather?q=${query}&appid=${api.key}`)
@@ -27,7 +27,6 @@ function App() {
       .then(result =>{
         setweather(result);
         setquery('');
-        console.log(result);
       })
     }
   }
@@ -40,6 +39,11 @@ function App() {
         value={query} onKeyPress={search}
         />
         </div>
+        {(typeof weather.message != "undefined")?
+        <div className={(isDawn) ?'error-message cold':'error-message'}>
+          "City Not Found!"
+        </div>
+        :''}
         {(typeof weather.main != "undefined") ? (
           <div>
             <div className="location-box">

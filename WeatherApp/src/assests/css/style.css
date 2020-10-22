@@ -91,6 +91,15 @@ main{
     text-align: center;
 }
 
+.error-message{
+    text-align: center;
+    position: relative;
+    color: white;
+    font-size: 24px;
+}
+
+
+
 
 @media (max-width: 768px){
     .home{
@@ -123,8 +132,8 @@ main{
     .temp.cold{
         color: black !important;
         position: relative;
-        margin: 30px auto;
-        padding: 10px 25px;
+        margin: 0px auto;
+        padding: 10px 25px 0px;
         font-size: 25px;
         font-weight: 400;
         text-align: center;
@@ -133,11 +142,17 @@ main{
     .weather.cold{
         color: black !important;
         position: relative;
-        margin: -35px auto;
-        padding: 0px 25px;
+        margin: 0px auto;
+        padding: 0px 25px 0px;
         font-size: 25px;
         font-weight: 400;
         text-align: center;
     }
     
+    .error-message.cold{
+        text-align: center;
+        position: relative;
+        color: black;
+        font-size: 24px;
+    }
 }
