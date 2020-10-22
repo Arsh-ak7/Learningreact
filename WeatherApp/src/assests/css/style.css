@@ -62,8 +62,8 @@ main{
 
 .weather-box .temp{
     position: relative;
-    margin: 30px auto;
-    padding: 10px 25px;
+    margin: 0px auto 10px;
+    padding: 0px 25px 10px;
     color: #fff;
     font-size: 25px;
     font-weight: 400;
@@ -72,11 +72,22 @@ main{
 
 .weather-box .weather{
     position: relative;
-    margin: -35px auto;
+    margin: -25px auto;
     padding: 0px 25px;
     color: #fff;
     font-size: 25px;
     font-weight: 400;
+    text-align: center;
+}
+
+.weather-icon{
+    position: relative;
+    margin: auto;
+    color: #fff;
+    padding: 0px 25px 0px 25px;
+}
+
+.main-weather-icon{
     text-align: center;
 }
 

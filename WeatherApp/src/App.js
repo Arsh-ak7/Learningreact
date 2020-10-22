@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './assests/css/style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'weather-icons/css/weather-icons.css';
+import WeatherIcon from './assests/WeatherIcon';
 const api={
   key:"ae9e15e6e0d244b77e6afc4ea6c67a72",
   base:"https://api.openweathermap.org/data/2.5/"
@@ -12,11 +14,11 @@ function App() {
   const dateBuilder = new Date();
 
   useEffect(() => {
-      if(dateBuilder.getHours>16 || dateBuilder.getHours <8 )
+      if(dateBuilder.getHours()>16 || dateBuilder.getHours() <8 )
       setisDawn(true);
       else
       setisDawn(false);
-  }, [])
+  }, [dateBuilder])
 
   const search = evt =>{
     if(evt.key==="Enter"){
@@ -49,6 +51,7 @@ function App() {
             </div>
             </div>
             <div className="weather-box">
+              <WeatherIcon weather={weather}/>
               <div className={`temp ${(isDawn) ? 'cold' : ''}`}>{Math.round(weather.main.temp-273.15,2)}&deg;C</div>
               <div className={`weather ${(isDawn) ? 'cold' : ''}`}>{weather.weather[0].main}</div>
             </div>
