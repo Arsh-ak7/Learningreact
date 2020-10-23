@@ -12,7 +12,7 @@ export default function useFetchImage(page, searchTerm) {
     function fetchSearch(){
         Axios.get(`${api}/search/photos?client_id=${key}&page=${page}&query=${searchTerm}`).then((res) => {
             if(page>1)
-            setImages([...images ,...res.data.results]);
+            setImages([...images, ...res.data.results]);
             else
             setImages([...res.data.results]);
             setisLoading(false);

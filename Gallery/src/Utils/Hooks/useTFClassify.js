@@ -5,16 +5,16 @@ import * as mobilenet from "@tensorflow-models/mobilenet"
 
 export default function useTFClassify() {
     const [isLoading, setisLoading] = useState(false);
-    const [predictions, setpredictions] = useState({});
+    const [predictions, setPrediction] = useState({});
     function predict(img){
         setisLoading(true);
         mobilenet.load().then(model => {
             // Classify the image.
             model.classify(img).then(predictions => {
-              setpredictions(predictions);
+              setPrediction(predictions);
               setisLoading(false)
             });
           }); 
     }
-    return {predict,predictions,setpredictions,isLoading};
+    return {predict,predictions,setPrediction,isLoading};
 }

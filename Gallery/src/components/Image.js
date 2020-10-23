@@ -3,7 +3,7 @@ import useTFClassify from '../Utils/Hooks/useTFClassify';
 function Image({image,index,handleRemove,show}) {
 const [isHovering, setIsHovering] = useState(false);
 const imageRef = useRef();
-const {predict,predictions,setPrediction,isLoading} = useTFClassify();
+const {predict,predictions,setPrediction} = useTFClassify();
     return (
             <div className ="relative" onMouseOver={()=> setIsHovering(true)} 
             onMouseLeave={()=>setIsHovering(false)}>
@@ -25,5 +25,6 @@ const {predict,predictions,setPrediction,isLoading} = useTFClassify();
             </div>   
     )
 }
+
 
 export default Image;

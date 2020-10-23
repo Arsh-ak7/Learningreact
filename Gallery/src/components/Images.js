@@ -23,16 +23,17 @@ export default function Images() {
 
     function handleChange(e){
         const text = e.target.value;
+        setpage(1);
         debounce(()=> setsearchTerm(text),1000)
     }    
     return (
         <section>
             {
-                errors.length > 0 ?(
+                (errors.length > 0 ? (
                     <div>
                         Unable to load
                     </div>
-                ) : null
+                ) : null) 
             }
             <div className="my-5">
                 <input type = "text" onChange={handleChange} className="w-full border shadow" placeholder="Search Photos here"></input>
@@ -44,7 +45,7 @@ export default function Images() {
             className="flex flex-wrap">
             {
             images.map((img,index) =>( 
-            <motion.div layoutId={img.urls.regular} className="p-2 w-1/5 flex justify-center" key={index} initial={{opacity:0}} animate ={{opacity:1}}>
+            <motion.div layoutId={img.urls.regular} className="p-2 w-1/3 flex justify-center block" key={index} initial={{opacity:0}} animate ={{opacity:1 , visibility: "visible"}}>
             <Image 
             image = {img.urls.regular} 
             index={index} handleRemove ={handleRemove} 
