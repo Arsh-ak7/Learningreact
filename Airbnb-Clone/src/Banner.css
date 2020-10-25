@@ -1,0 +1,45 @@
+.banner {
+	background: url("https://media.architecturaldigest.in/wp-content/uploads/2016/12/Airbnb_Pillow-Talk.jpg")
+		center center;
+	height: 50vh;
+	position: relative;
+}
+
+.banner-info {
+	background-color: black;
+	color: aliceblue;
+	padding-top: 25vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 40px;
+	width: 300px;
+}
+
+.banner-info > button {
+	background-color: #ff7779;
+	color: white;
+	text-transform: inherit;
+	margin-top: 20px;
+	font-weight: 600;
+}
+
+.banner-search {
+	display: flex;
+	flex-direction: column;
+}
+
+.banner-searchbutton {
+	background-color: white !important;
+	font-weight: 600 !important;
+	text-transform: inherit !important;
+	color: #ff7779 !important;
+}
+
+.banner-info > h5 {
+	margin-top: 10px;
+}
+
+.banner-info > button:hover {
+	background-color: white;
+	color: #ff7779;
+}
