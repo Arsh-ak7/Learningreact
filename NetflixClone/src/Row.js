@@ -31,10 +31,10 @@ export default function Row({title,fetchUrl,isLargeRow}) {
             setTrailerUrl('');
         }
         else{
-            movieTrailer(movie.name|| "").then((url)=>{
+            movieTrailer(movie?.name|| movie?.name || movie?.original_name || " ").then((url)=>{
                 const urlParams = new URLSearchParams(new URL(url).search);
                 setTrailerUrl(urlParams.get("v"));
-            }).catch((error)=> console.log(error));
+            }).catch((error) => console.log(error));
         }
     };
 
