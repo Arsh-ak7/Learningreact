@@ -1,0 +1,31 @@
+.navbar {
+	display: flex;
+	color: white;
+	overflow-x: scroll;
+	padding: 10px;
+	padding-left: 40px;
+}
+
+.navbar > h2 {
+	cursor: pointer;
+	margin-left: 30px;
+	margin-right: 30px;
+	font-weight: 500;
+	font-size: 21px;
+	opacity: 0.7;
+	transition: transform ease-out;
+}
+
+.navbar > h2:hover {
+	opacity: 1;
+	transform: scale(1.2);
+}
+
+.navbar::-webkit-scrollbar {
+	display: none;
+}
+
+.navbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
