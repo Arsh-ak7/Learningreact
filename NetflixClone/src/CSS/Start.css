@@ -124,14 +124,24 @@
 	height: 1em !important;
 }
 
+.list-btn-icon .rotate {
+	transition: all 0.4s;
+	transform: rotate(45);
+}
+
 .faq-answer {
 	background-color: #303030;
 	margin-top: -19px;
 	padding: 20px;
 	font-size: 1.625rem;
 	font-weight: 400;
+	white-space: pre-line;
 }
 
-.faq-answer.closed {
+.closed {
 	display: none;
+}
+
+.open {
+	display: block;
 }
