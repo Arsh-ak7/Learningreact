@@ -1,0 +1,137 @@
+.cover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://mppmduse2pmpovwapp.azurewebsites.net/wp-content/uploads/2019/09/netflix-background-9.jpg");
+	background-position: center;
+	background-size: cover;
+	color: white;
+	height: 706.984px;
+	position: relative;
+}
+
+.cover-contents {
+	text-align: center;
+}
+
+.cover-header {
+	position: relative;
+	max-width: 950px;
+	width: 100%;
+	margin: auto;
+	padding: 0;
+	z-index: 1;
+	text-align: center;
+}
+
+.cover-header > h1 {
+	font-size: 3.125rem;
+	max-width: 640px;
+	font-weight: 600;
+	line-height: 1.1;
+	margin: 0 auto;
+}
+
+.cover-header > h2 {
+	font-size: 1.625rem;
+	max-width: 640px;
+	font-weight: 400;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+.cover-fade {
+	height: 13.7rem;
+	background-image: linear-gradient(
+		360deg,
+		transparent,
+		rgba(37, 37, 37, 0.61),
+		#111
+	);
+}
+
+.cover-fade2 {
+	height: 17rem;
+	background-image: linear-gradient(
+		180deg,
+		transparent,
+		rgba(37, 37, 37, 0.61),
+		rgba(0, 0, 0, 0.9)
+	);
+}
+
+.cover-button {
+	cursor: pointer;
+	color: white;
+	outline: none;
+	border: none;
+	font-weight: 700;
+	border-radius: 0.2vw;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	margin: 10px 0px;
+	margin-right: 1rem;
+	padding-top: 0.5rem;
+	background-color: rgba(235, 8, 8, 0.829);
+	padding-bottom: 0.5rem;
+}
+
+.cover-button:hover {
+	color: rgba(235, 8, 8, 0.829);
+	background-color: #e6e6e6;
+	transition: all 0.2s;
+}
+
+.faq {
+	color: white;
+	padding: 70px 0px;
+	text-align: center;
+}
+
+.faq-header {
+	font-size: 3.125rem;
+	line-height: 1.1;
+	text-align: center;
+	margin-left: 36px;
+}
+
+.faq-list {
+	list-style: none;
+	width: 75%;
+	margin: 2em auto;
+	max-width: 700px;
+}
+
+.faq-list-btn {
+	cursor: pointer;
+	outline: none;
+	border: none;
+	background-color: #303030;
+	color: white;
+	padding: 0.8em 1.2em 0.8em 1.2em;
+	font-size: 1.625rem;
+	margin: 20px 0px;
+	position: relative;
+	font-weight: 400;
+	width: 100%;
+	text-align: left;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.list-btn-icon {
+	font-size: 37px !important;
+	right: 1em !important;
+	height: 1em !important;
+}
+
+.faq-answer {
+	background-color: #303030;
+	margin-top: -19px;
+	padding: 20px;
+	font-size: 1.625rem;
+	font-weight: 400;
+}
+
+.faq-answer.closed {
+	display: none;
+}
