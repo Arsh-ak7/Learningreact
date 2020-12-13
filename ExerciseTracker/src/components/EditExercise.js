@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useParams } from 'react-router-dom';
 
-export default function CreateExercise() {
+export default function EditExercise() {
 	const [exercise, setExercise] = useState({
 		username: '',
 		description: '',
@@ -11,12 +12,24 @@ export default function CreateExercise() {
 		date: new Date(),
 	});
 	const [users, setUsers] = useState([]);
-
+	const { id } = useParams();
 	useEffect(() => {
+		axios
+			.get('http://localhost:5000/exercises/' + id)
+			.then((res) => {
+				console.log(res);
+				setExercise({
+					username: res.data.username,
+					duration: res.data.duration,
+					description: res.data.description,
+					date: new Date(res.data.date),
+				});
+			})
+			.catch((err) => console.log(err));
+
 		axios.get('http://localhost:5000/users').then((res) => {
 			if (res.data.length > 0) {
 				setUsers(res.data.map((user) => user.username));
-				setExercise({ username: res.data[0].username });
 			}
 		});
 	}, []);
@@ -35,7 +48,7 @@ export default function CreateExercise() {
 	function onSubmit(e) {
 		e.preventDefault();
 		axios
-			.post('http://localhost:5000/exercises/add', exercise)
+			.post('http://localhost:5000/exercises/update/' + id, exercise)
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));
 		setExercise({
@@ -49,7 +62,7 @@ export default function CreateExercise() {
 
 	return (
 		<div>
-			<h3>Create New Exercise Log</h3>
+			<h3>Edit Exercise Log</h3>
 			<form onSubmit={onSubmit}>
 				<div className='form-group'>
 					<label>Username: </label>
@@ -104,7 +117,7 @@ export default function CreateExercise() {
 				<div className='form-group'>
 					<input
 						type='submit'
-						value='Create Exercise Log'
+						value='Edit Exercise Log'
 						className='btn btn-primary'
 					/>
 				</div>
