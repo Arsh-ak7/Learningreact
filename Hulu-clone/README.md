@@ -4,6 +4,8 @@
 
 ### The website is hosted on Google Firebase.
 
+##### A screenshot of the website
+
 ![Hulu Clone Cover](https://github.com/Arsh-ak7/Learningreact/blob/main/Hulu-clone/Hulu-Clone.png)
 
-#### The [Website](https://hulu-clone-16d1e.web.app/)
+#### The Link to [Website](https://hulu-clone-16d1e.web.app/)
