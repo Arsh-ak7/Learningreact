@@ -1,15 +1,55 @@
-exports.getAllBootcamps = (req, res, next) => {
-	res.send("Get all bootcamps");
-};
+const Bootcamp = require("../models/Bootcamp");
+const asyncHandler = require("../middleware/asyncHandler");
+const ErrorResponse = require("../utils/errorResponse");
 
-exports.createNewBootcamp = (req, res, next) => {
-	res.send("Cteate new bootcamps");
-};
+exports.getAllBootcamps = asyncHandler(async (req, res, next) => {
+	const bootcamps = await Bootcamp.find();
 
-exports.updateBootcampById = (req, res, next) => {
-	res.send("Update bootcamps");
-};
+	res.status(200).json({
+		success: true,
+		data: bootcamps,
+	});
+});
 
-exports.deleteBootcampById = (req, res, next) => {
-	res.send("Delete bootcamps");
-};
+exports.createNewBootcamp = asyncHandler(async (req, res, next) => {
+	const bootcamp = await Bootcamp.create(req.body);
+	res.status(200).json({
+		success: true,
+		data: bootcamp,
+	});
+});
+
+exports.updateBootcampById = asyncHandler(async (req, res, next) => {
+	let bootcamp = await Bootcamp.findById(req.params.id);
+
+	if (!bootcamp) {
+		return next(
+			new ErrorResponse(`Bootcamp ${req.params.id} not found`, "404")
+		);
+	}
+
+	bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
+		new: true,
+		runValidators: true,
+	});
+	res.status(200).json({
+		success: true,
+		data: bootcamp,
+	});
+});
+
+exports.deleteBootcampById = asyncHandler(async (req, res, next) => {
+	let bootcamp = await Bootcamp.findById(req.params.id);
+
+	if (!bootcamp) {
+		return next(
+			new ErrorResponse(`Bootcamp ${req.params.id} not found`, "404")
+		);
+	}
+
+	await bootcamp.remove();
+	res.status(200).json({
+		success: true,
+		data: bootcamp,
+	});
+});
