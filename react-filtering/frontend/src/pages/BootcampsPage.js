@@ -1,4 +1,5 @@
 import {
+	Button,
 	CircularProgress,
 	Container,
 	FormControl,
@@ -13,6 +14,7 @@ import {
 	Typography,
 } from "@material-ui/core";
 import { useState, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
 import BootcampCard from "../components/BootcampCard";
 
@@ -42,28 +44,112 @@ const useStyles = makeStyles({
 export default function BootcampsPage() {
 	const [bootcamps, setBootcamps] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const [sliderMax, setSliderMax] = useState(1000);
+	const [priceRange, setPriceRange] = useState([25, 75]);
+	const [priceOrder, setPriceOrder] = useState("descending");
+	const [sorting, setSorting] = useState("");
+	const [filter, setFilter] = useState("");
+	const history = useHistory();
+	const location = useLocation();
+
+	const params = location.search ? location.search : null;
+
 	const classes = useStyles();
+
+	const updateUiValuesSetup = (uiValues) => {
+		setSliderMax(uiValues.maxPrice);
+
+		if (uiValues.filtering.price) {
+			let priceFilter = uiValues.filtering.price;
+			setPriceRange([Number(priceFilter.gte), Number(priceFilter.lte)]);
+		}
+
+		if (uiValues.sorting.price) {
+			let priceSort = uiValues.sorting.price;
+			setPriceOrder(priceSort);
+		}
+	};
 
 	useEffect(() => {
 		let cancel;
 		const fetchData = async () => {
 			setLoading(true);
 			try {
+				let query;
+				if (params && !filter) {
+					query = params;
+				} else {
+					query = filter;
+				}
+				if (sorting) {
+					if (query.length === 0) {
+						query = `?sort=${sorting}`;
+					} else {
+						query = query + "&sort=" + sorting;
+					}
+				}
 				const { data } = await axios({
 					method: "GET",
-					url: `/api/v1/bootcamps`,
+					url: `/api/v1/bootcamps/${query}`,
 					cancelToken: new axios.CancelToken((c) => (cancel = c)),
 				});
 				setBootcamps(data.data);
 				setLoading(false);
+				updateUiValuesSetup(data.uiValues);
 			} catch (err) {
 				console.log(err);
 				setLoading(false);
+				if (axios.isCancel(err)) return;
 			}
 		};
-
 		fetchData();
-	}, []);
+		return () => cancel();
+	}, [filter, params, sorting]);
+
+	const onSliderCommitHandler = (e, newValue) => {
+		buildRangeFilter(newValue);
+	};
+
+	const buildRangeFilter = (newValue) => {
+		const urlFilter = `?price[gte]=${newValue[0]}&price[lte]=${newValue[1]}`;
+		setFilter(urlFilter);
+		history.push(urlFilter);
+	};
+
+	const handlePriceChange = (e, type) => {
+		let newRange;
+		if (type === "lower") {
+			newRange = [...priceRange];
+			newRange[0] = Number(e.target.value);
+
+			setPriceRange(newRange);
+		}
+
+		if (type === "upper") {
+			newRange = [...priceRange];
+			newRange[1] = Number(e.target.value);
+
+			setPriceRange(newRange);
+		}
+	};
+
+	const onTextfieldCommitHandler = () => {
+		buildRangeFilter(priceRange);
+	};
+
+	const handleSortChange = (e) => {
+		setPriceOrder(e.target.value);
+		if (e.target.value === "ascending") setSorting("price");
+		else setSorting("-price");
+	};
+
+	const clearAllfilters = () => {
+		setFilter("");
+		setSorting("");
+		setPriceRange([0, sliderMax]);
+		history.push("/");
+	};
+
 	return (
 		<Container className={classes.root}>
 			<Paper className={classes.paper}>
@@ -71,7 +157,15 @@ export default function BootcampsPage() {
 					<Grid item xs={12} sm={6}>
 						<Typography gutterBottom>Filters</Typography>
 						<div className={classes.filters}>
-							<Slider min={0} max={100} />
+							<Slider
+								min={0}
+								max={sliderMax}
+								value={priceRange}
+								disabled={loading}
+								valueLabelDisplay='auto'
+								onChange={(e, newValue) => setPriceRange(newValue)}
+								onChangeCommitted={onSliderCommitHandler}
+							/>
 							<div className={classes.priceRangeInputs}>
 								<TextField
 									size='small'
@@ -80,7 +174,9 @@ export default function BootcampsPage() {
 									variant='outlined'
 									type='number'
 									disabled={loading}
-									value={0}
+									value={priceRange[0]}
+									onChange={(e) => handlePriceChange(e, "lower")}
+									onBlur={onTextfieldCommitHandler}
 								/>
 								<TextField
 									size='small'
@@ -89,7 +185,9 @@ export default function BootcampsPage() {
 									variant='outlined'
 									type='number'
 									disabled={loading}
-									value={75}
+									value={priceRange[1]}
+									onChange={(e) => handlePriceChange(e, "upper")}
+									onBlur={onTextfieldCommitHandler}
 								/>
 							</div>
 						</div>
@@ -97,13 +195,19 @@ export default function BootcampsPage() {
 					<Grid item xs={12} sm={6}>
 						<Typography gutterBottom>Sort By</Typography>
 						<FormControl component='fieldset' className={classes.filters}>
-							<RadioGroup aria-label='price-order' name='price-order'>
+							<RadioGroup
+								aria-label='price-order'
+								name='price-order'
+								value={priceOrder}
+								onChange={handleSortChange}>
 								<FormControlLabel
+									value='descending'
 									disabled={loading}
 									control={<Radio />}
 									label='Price:  Highest - Lowest'
 								/>
 								<FormControlLabel
+									value='ascending'
 									disabled={loading}
 									control={<Radio />}
 									label='Price:  Lowest - Highest'
@@ -112,6 +216,9 @@ export default function BootcampsPage() {
 						</FormControl>
 					</Grid>
 				</Grid>
+				<Button size='small' color='primary' onClick={clearAllfilters}>
+					Clear All
+				</Button>
 			</Paper>
 			<Grid container spacing={2}>
 				{loading ? (
