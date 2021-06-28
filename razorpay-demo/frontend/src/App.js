@@ -28,14 +28,19 @@ function App() {
 			alert("Razorpay SDK failed");
 			return;
 		}
+
+		const data = await fetch("http://localhost:1337/razorpay", {
+			method: "POST",
+		}).then((t) => t.json());
+
 		const options = {
 			key: __DEV__ ? "rzp_test_nHaVbpE0xKVSil" : "PROD_KEY", // Enter the Key ID generated from the Dashboard
-			amount: "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-			currency: "INR",
+			amount: data.amount.toString(), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+			currency: data.currency,
 			name: "Acme Corp",
 			description: "Test Transaction",
-			image: "https://localhost:1337/logo.svg",
-			order_id: "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+			image: "http://localhost:1337/logo.svg",
+			order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
 			handler: function (response) {
 				alert(response.razorpay_payment_id);
 				alert(response.razorpay_order_id);
