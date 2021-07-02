@@ -26,11 +26,12 @@
 	display: flex;
 	justify-content: space-between;
 	text-align: center;
+	align-items: center;
 }
 
 .logout-btn {
 	margin-right: 80px;
-	padding: 0px 20px;
+	padding: 10px 20px;
 	border: none;
 	outline: none;
 	color: white;
@@ -46,8 +47,6 @@
 }
 
 .avatar {
-	position: fixed;
-	width: 30px;
-	right: 20px;
-	object-fit: contain;
+	display: flex;
+	margin: 20px;
 }
