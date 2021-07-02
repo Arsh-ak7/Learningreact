@@ -5,6 +5,7 @@ const { UserInputError } = require("apollo-server");
 const User = require("../../models/User");
 const { SECRET_KEY } = require("../../secrets");
 const { validateRegisterInput } = require("../../utils/validators");
+const { validateLoginInput } = require("../../utils/validators");
 
 const generateToken = (user) => {
 	return jwt.sign(
@@ -38,54 +39,51 @@ module.exports = {
 				throw new UserInputError("Wrong Credentials", { errors });
 			}
 			const token = generateToken(user);
-
 			return {
-				...user._doc,
+				...user.toJSON(),
 				id: user._id,
 				token,
 			};
 		},
-	},
+		async register(
+			_,
+			{ registerInput: { username, email, password, confirmPassword } },
+			context,
+			info
+		) {
+			const { valid, errors } = validateRegisterInput(
+				username,
+				email,
+				password,
+				confirmPassword
+			);
 
-	async register(
-		_,
-		{ registerInput: { username, email, password, confirmPassword } },
-		context,
-		info
-	) {
-		const { valid, errors } = validateRegisterInput(
-			username,
-			email,
-			password,
-			confirmPassword
-		);
+			if (!valid) {
+				throw new UserInputError("Errors", { errors });
+			}
 
-		if (!valid) {
-			throw new UserInputError("Errors", { errors });
-		}
-
-		const user = await User.findOne({ username });
-		if (user) {
-			throw new UserInputError("Username already exists", {
-				errors: {
-					username: "This Username is taken",
-				},
+			const user = await User.findOne({ username });
+			if (user) {
+				throw new UserInputError("Username already exists", {
+					errors: {
+						username: "This Username is taken",
+					},
+				});
+			}
+			const hashedpassword = await bcrypt.hash(password, 12);
+			const newUser = new User({
+				email,
+				username,
+				password: hashedpassword,
+				createdAt: new Date().toISOString(),
 			});
-		}
-		const password = await bcrypt.hash(password, 12);
-		const newUser = new User({
-			email,
-			username,
-			password,
-			createdAt: new Date().toISOString(),
-		});
-		const res = await newUser.save();
-		const token = generateToken(newUser);
-
-		return {
-			...res._doc,
-			id: res._id,
-			token,
-		};
+			const res = await newUser.save();
+			const token = generateToken(newUser);
+			return {
+				...res.toJSON(),
+				id: res._id,
+				token,
+			};
+		},
 	},
 };
