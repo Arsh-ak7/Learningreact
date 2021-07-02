@@ -6,6 +6,7 @@ const User = require("../../models/User");
 const { SECRET_KEY } = require("../../secrets");
 const { validateRegisterInput } = require("../../utils/validators");
 const { validateLoginInput } = require("../../utils/validators");
+const checkAuth = require("../../utils/checkAuth");
 
 const generateToken = (user) => {
 	return jwt.sign(
@@ -83,6 +84,28 @@ module.exports = {
 				...res.toJSON(),
 				id: res._id,
 				token,
+			};
+		},
+
+		async subscribe(_, { subsValue }, context) {
+			const user = checkAuth(context);
+			const username = user.username;
+			const newUser = await User.findOneAndUpdate(
+				{ username },
+				{ $set: { subscription: subsValue } },
+				{ upsert: true, useFindAndModify: false },
+				function (err, doc) {
+					if (err) {
+						throw new UserInputError();
+					}
+				}
+			);
+
+			const res = await newUser.save();
+			console.log(res);
+			return {
+				...res.toJSON(),
+				id: res._id,
 			};
 		},
 	},
