@@ -23,6 +23,16 @@ export default function Home() {
 						</Link>
 					</div>
 				</div>
+				<div className='get-started-container'>
+					<input
+						type='email'
+						className='get-started-input'
+						placeholder='Email Address'
+					/>
+					<Link to='/signup' className='get-started-link'>
+						<button className='get-started-button'>Get Started</button>
+					</Link>
+				</div>
 				<div className='cover-fade2' />
 			</header>
 			<div className='faq'>

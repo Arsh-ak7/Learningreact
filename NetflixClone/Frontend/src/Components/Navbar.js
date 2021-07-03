@@ -29,7 +29,10 @@ export default function Navbar() {
 			<div className='btn-wrapper'>
 				{user && (
 					<>
-						<Avatar className='avatar'>H</Avatar>
+						<Avatar className='avatar'>{user.username[0]}</Avatar>
+						<Link to='/subcribe'>
+							<button className='subscribe-btn'>Subscribe</button>
+						</Link>
 						<button className='logout-btn' onClick={logout}>
 							LogOut
 						</button>

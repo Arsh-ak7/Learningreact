@@ -145,3 +145,45 @@
 .open {
 	display: block;
 }
+
+.get-started-container {
+	display: flex;
+	justify-content: center;
+}
+
+.get-started-input {
+	width: 30%;
+	height: 40px;
+	display: flex;
+	border: none;
+	outline: none;
+	font-size: 1rem;
+	border-radius: 0.14vw;
+	padding: 0.4rem;
+}
+
+.get-started-button {
+	cursor: pointer;
+	color: white;
+	outline: none;
+	border: none;
+	font-weight: 400;
+	border-radius: 0.2vw;
+	align-items: center;
+	padding: 0 1em;
+	display: flex;
+	background-color: rgba(235, 8, 8);
+	height: 100%;
+	font-size: 1rem;
+	margin-left: 0.4em;
+}
+
+.get-started-button:hover {
+	color: rgba(235, 8, 8, 0.829);
+	background-color: #e6e6e6;
+	transition: all 0.2s;
+}
+
+.get-started-link {
+	text-decoration: none;
+}

@@ -100,9 +100,7 @@ module.exports = {
 					}
 				}
 			);
-
 			const res = await newUser.save();
-			console.log(res);
 			return {
 				...res.toJSON(),
 				id: res._id,

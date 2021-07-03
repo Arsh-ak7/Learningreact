@@ -24,7 +24,7 @@
 
 .btn-wrapper {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	text-align: center;
 	align-items: center;
 }
@@ -49,4 +49,15 @@
 .avatar {
 	display: flex;
 	margin: 20px;
+}
+
+.subscribe-btn {
+	margin-right: 20px;
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	color: white;
+	background-color: rgba(235, 8, 8);
+	font-weight: 600;
+	cursor: pointer;
 }
