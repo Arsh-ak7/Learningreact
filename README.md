@@ -4,7 +4,7 @@
 
 ## The projects included in this folder
 
-![Add event to google Calendar](https://github.com/Arsh-ak7/React-Projects/tree/main/calendar-test)
+[Add event to google Calendar](https://github.com/Arsh-ak7/React-Projects/tree/main/calendar-test)
 
 ![Airbnb Clone](https://github.com/Arsh-ak7/React-Projects/tree/main/Airbnb-Clone)
 
