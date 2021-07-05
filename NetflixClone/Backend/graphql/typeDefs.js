@@ -1,6 +1,7 @@
 const { gql } = require("apollo-server");
 
 module.exports = gql`
+	scalar Date
 	type User {
 		id: ID!
 		email: String!
@@ -8,6 +9,7 @@ module.exports = gql`
 		createdAt: String!
 		username: String!
 		subscription: Int
+		expiresOn: Date
 	}
 	input RegisterInput {
 		username: String!
@@ -15,12 +17,20 @@ module.exports = gql`
 		password: String!
 		confirmPassword: String!
 	}
+
+	type Subscriber {
+		id: ID!
+		username: String!
+		currency: String!
+		amount: Int!
+	}
+
 	type Query {
-		getUserData(email: String!): User!
+		getUserData(username: String!): User!
 	}
 	type Mutation {
 		register(registerInput: RegisterInput): User!
 		login(username: String!, password: String!): User!
-		subscribe(subsValue: Int!): User!
+		subscribe(subsValue: Int!): Subscriber!
 	}
 `;

@@ -9,6 +9,7 @@ import SignUp from "./Pages/SignUp";
 import Home from "./Pages/Home";
 import AuthRoute from "./utils/authRoute";
 import GuestRoute from "./utils/guestRoute";
+import Subscription from "./Pages/Subscription";
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 					<AuthRoute exact path='/signup' component={SignUp} />
 					<AuthRoute exact path='/login' component={Login} />
 					<GuestRoute exact path='/home' component={Home} />
+					<GuestRoute exact path='/subscribe' component={Subscription} />
 					<Route exact path='/' component={Start} />
 				</Router>
 			</AuthProvider>

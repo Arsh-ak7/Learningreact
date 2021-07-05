@@ -1,0 +1,111 @@
+.subscription-container {
+	height: 100vh;
+	background-color: aliceblue;
+}
+
+.subscription-wrapper {
+	padding-top: 20vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.price-tag {
+	padding: 10px;
+}
+
+.subscription-tile {
+	margin: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 400px !important;
+	width: 300px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0px 4px 4px 4px rgb(0, 0, 0, 0.17);
+}
+
+.symbol {
+	font-size: 18px;
+	padding: 2px;
+	font-weight: 500;
+}
+
+.price {
+	font-size: 40px;
+}
+.month {
+	font-weight: 500;
+}
+
+.plan-name {
+	font-family: "Poppins", sans-serif;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.subs-details {
+	font-family: "Poppins", sans-serif;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.subs-detail-info {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.plan-name {
+	font-size: 26px;
+	font-weight: 600;
+}
+
+.pay-now {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.pay-btn {
+	font-family: "Poppins", sans-serif;
+	text-transform: uppercase;
+	margin-top: 20px;
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	color: white;
+	background-color: rgba(235, 8, 8);
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.pay-btn:hover {
+	background-color: aliceblue;
+	color: rgba(235, 8, 8);
+	transition: all 0.3s;
+}
+
+.user-details {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 24px;
+	font-family: "Poppins", sans-serif;
+}
