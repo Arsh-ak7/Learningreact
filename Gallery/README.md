@@ -4,6 +4,6 @@
 
 ##### A screenshot of the Website
 
-![ScreenShot of Website]https://github.com/Arsh-ak7/React-Projects/blob/main/Gallery/gallery.png)
+![ScreenShot of Website](https://github.com/Arsh-ak7/React-Projects/blob/main/Gallery/gallery.png)
 
 ### Do check out the [Website](https://arsh-gallery.netlify.app/gallery)
