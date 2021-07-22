@@ -1,15 +1,15 @@
 import firebase from "firebase";
 
 var firebaseConfig = {
-    apiKey: "AIzaSyAWg1AG9Ii-jV3PNAYSSVIKNfIzkRJC42M",
-    authDomain: "react-1-1e79b.firebaseapp.com",
-    databaseURL: "https://react-1-1e79b.firebaseio.com",
-    projectId: "react-1-1e79b",
-    storageBucket: "react-1-1e79b.appspot.com",
-    messagingSenderId: "400436680622",
-    appId: "1:400436680622:web:e44599593c364e054a9a3f"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+	apiKey: "AIzaSyBKUvcPFYfBXCdcqdtHInQ4usSUsRGuW4M",
+	authDomain: "gallery-app-ea447.firebaseapp.com",
+	projectId: "gallery-app-ea447",
+	storageBucket: "gallery-app-ea447.appspot.com",
+	messagingSenderId: "1088926956815",
+	appId: "1:1088926956815:web:3b3b46525b43f1842e127a",
+	measurementId: "G-XTHWDV5CMS",
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-  export default firebase;
+export default firebase;
