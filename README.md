@@ -10,8 +10,6 @@
 
 [Exercise Tracker](https://github.com/Arsh-ak7/React-Projects/tree/main/ExerciseTracker)
 
-[Gallery](https://github.com/Arsh-ak7/React-Projects/tree/main/Gallery)
-
 [Hulu Clone](https://github.com/Arsh-ak7/React-Projects/tree/main/Hulu-clone)
 
 [Netflix Clone](https://github.com/Arsh-ak7/React-Projects/tree/main/NetflixClone)
