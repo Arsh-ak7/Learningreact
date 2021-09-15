@@ -12,6 +12,11 @@
 	transition: all 0.5s;
 }
 
+.nav-heading {
+	text-decoration: none;
+	color: white;
+}
+
 .nav-black {
 	background-color: #111;
 }

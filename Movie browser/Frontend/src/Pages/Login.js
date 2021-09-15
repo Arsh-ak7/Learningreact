@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import { Checkbox } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/client";
-import { AuthContext } from "../context/auth";
-import { useForm } from "../utils/hooks";
-import "../CSS/Login.css";
+import React, { useContext, useState } from 'react';
+import { Checkbox } from '@material-ui/core';
+import { Link, useHistory } from 'react-router-dom';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/client';
+import { AuthContext } from '../context/auth';
+import { useForm } from '../utils/hooks';
+import '../CSS/Login.css';
 
 export default function Login() {
 	const [errors, setErrors] = useState({});
@@ -13,8 +13,8 @@ export default function Login() {
 	const context = useContext(AuthContext);
 
 	const initialState = {
-		username: "",
-		password: "",
+		username: '',
+		password: '',
 	};
 
 	const { onChange, onSubmit, values } = useForm(loggedUser, initialState);
@@ -22,7 +22,7 @@ export default function Login() {
 	const [loginUser, { loading }] = useMutation(LOGIN_USER, {
 		update(_, { data: { login: userData } }) {
 			context.login(userData);
-			history.push("/home");
+			history.push('/home');
 		},
 		onError(err) {
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);
@@ -59,7 +59,7 @@ export default function Login() {
 								onChange={onChange}
 							/>
 							<button type='submit' className='login-button'>
-								{loading ? "Logging in" : "Login"}
+								{loading ? 'Logging in' : 'Login'}
 							</button>
 						</form>
 						{Object.keys(errors).length > 0 && (
@@ -79,7 +79,7 @@ export default function Login() {
 							<span>Need help?</span>
 						</div>
 						<div className='sign-up-new'>
-							<span>New to Netflix?</span>
+							<span>New Here?</span>
 							<Link className='signup-link' to='/SignUp'>
 								SignUp Now
 							</Link>

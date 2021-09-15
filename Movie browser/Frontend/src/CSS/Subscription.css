@@ -1,6 +1,6 @@
 .subscription-container {
 	height: 100vh;
-	background-color: aliceblue;
+	background-color: black;
 }
 
 .subscription-wrapper {
@@ -41,7 +41,7 @@
 }
 
 .plan-name {
-	font-family: "Poppins", sans-serif;
+	font-family: 'Poppins', sans-serif;
 	display: flex;
 	width: 100%;
 	justify-content: center;
@@ -49,7 +49,7 @@
 }
 
 .subs-details {
-	font-family: "Poppins", sans-serif;
+	font-family: 'Poppins', sans-serif;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -72,6 +72,7 @@
 .plan-name {
 	font-size: 26px;
 	font-weight: 600;
+	text-align: center;
 }
 
 .pay-now {
@@ -82,7 +83,7 @@
 }
 
 .pay-btn {
-	font-family: "Poppins", sans-serif;
+	font-family: 'Poppins', sans-serif;
 	text-transform: uppercase;
 	margin-top: 20px;
 	padding: 10px 20px;
@@ -107,5 +108,5 @@
 	align-items: center;
 	text-align: center;
 	font-size: 24px;
-	font-family: "Poppins", sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
