@@ -12,7 +12,7 @@
 
 [Hulu Clone](https://github.com/Arsh-ak7/React-Projects/tree/main/Hulu-clone)
 
-[Netflix Clone](https://github.com/Arsh-ak7/React-Projects/tree/main/NetflixClone)
+[Movie Browser](https://github.com/Arsh-ak7/React-Projects/tree/main/Movie-browser)
 
 [Online Store](https://github.com/Arsh-ak7/React-Projects/tree/main/OnlineStore)
 
